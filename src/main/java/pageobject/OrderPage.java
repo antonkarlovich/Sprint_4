@@ -1,4 +1,4 @@
-package pageObject;
+package pageobject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -7,12 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 public class OrderPage {
-    private WebDriver driver;
-
-    public OrderPage(WebDriver driver) {
-        this.driver = driver;
-    }
-
+    public final By IMG_ORDER_PLACED = By.xpath("//div[(text()= 'Заказ оформлен')]");
     //блок личной информации заказа
     private final By ORDER_HEADER = By.xpath("//div[(text()= 'Для кого самокат')]");
     private final By INPUT_NAME = By.xpath("//input[@placeholder ='* Имя']");
@@ -31,7 +26,10 @@ public class OrderPage {
     private final By INPUT_COMMENT = By.xpath("//input[@placeholder ='Комментарий для курьера']");
     private final By BUTTON_ORDER = By.xpath("//div[@class='Order_Buttons__1xGrp']//button[contains(text(), 'Заказать')]");
     private final By BUTTON_YES = By.xpath("//button[contains(text(), 'Да')]");
-    public final By IMG_ORDER_PLACED = By.xpath("//div[(text()= 'Заказ оформлен')]");
+    private WebDriver driver;
+    public OrderPage(WebDriver driver) {
+        this.driver = driver;
+    }
 
     public void inputPersonalInfo(String name, String surname, String address, String phone, String metro) {
         MainPage mainPage = new MainPage(driver);
@@ -43,8 +41,6 @@ public class OrderPage {
         WebElement webElement = driver.findElement(INPUT_METRO);
         new Actions(driver).moveToElement(webElement).click().sendKeys(metro)
                 .sendKeys(Keys.ARROW_DOWN).sendKeys(Keys.ENTER).build().perform();
-
-
     }
 
     public void inputDetailRent() {

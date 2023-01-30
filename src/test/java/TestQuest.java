@@ -3,9 +3,7 @@ import org.junit.*;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pageObject.MainPage;
-
-import static org.junit.matchers.JUnitMatchers.containsString;
+import pageobject.MainPage;
 
 @RunWith(Parameterized.class)
 public class TestQuest {
@@ -19,7 +17,6 @@ public class TestQuest {
         this.checkedText = checkedText;
         this.index = index;
     }
-
 
     @Parameterized.Parameters
     public static Object[][] getTestData() {
@@ -51,7 +48,7 @@ public class TestQuest {
     @Test
     public void checkQuestTest() {
         mainPage.click(mainPage.getListQuestions().get(index));
-        Assert.assertThat("Текст отличается", mainPage.getListAnswer().get(index).getText(), containsString(checkedText));
+        Assert.assertEquals("Текст отличается", mainPage.getListAnswer().get(index).getText(), checkedText);
     }
 
     @AfterClass

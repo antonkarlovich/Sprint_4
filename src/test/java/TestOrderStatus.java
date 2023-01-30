@@ -5,8 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pageObject.MainPage;
-
+import pageobject.MainPage;
 
 public class TestOrderStatus {
 
@@ -18,7 +17,6 @@ public class TestOrderStatus {
         driver = new ChromeDriver();
     }
 
-
     @Test
     public void findOrder_withPom_expectNotFound() {
         MainPage mainPage = new MainPage(driver);
@@ -27,7 +25,6 @@ public class TestOrderStatus {
         mainPage.enterOrderNumber("123");
         Assert.assertTrue(mainPage.isImageNotFoundDisplayed());
     }
-
 
     @After
     public void cleanUp() {

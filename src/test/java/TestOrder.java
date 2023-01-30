@@ -8,17 +8,15 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
-import pageObject.MainPage;
-import pageObject.OrderPage;
+import pageobject.MainPage;
+import pageobject.OrderPage;
 
 @RunWith(Parameterized.class)
 public class TestOrder {
-    public final By ORDER_BUTTON_TOP = By.className("Button_Button__ra12g");
 
     public ChromeDriver driver;
     public OrderPage orderPage;
     public MainPage mainPage;
-
     private final String name;
     private final String surname;
     private final String address;
@@ -37,7 +35,6 @@ public class TestOrder {
         this.clickOrderButton = clickOrderButton;
     }
 
-
     @Parameterized.Parameters
     public static Object[][] getData() {
         MainPage mainPage = new MainPage();
@@ -45,7 +42,6 @@ public class TestOrder {
                 {"Иван", "Иванов", "Москва", "73454543464", "Академическая", "Комментарий 1", mainPage.ORDER_BUTTON_TOP},
                 {"Смирнов", "Петр", "Москва", "+75653432376", "Баррикадная", " Комментарий 2", mainPage.ORDER_BUTTON_DOWN}
         };
-
     }
 
     @Before
